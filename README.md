@@ -23,6 +23,7 @@ INFOMATION:
 This application will utilize: HTML, CSS, Javascript, and Tailwind.
 The third party API website links used :
 https://openchargemap.org/site/develop/api
+
 https://positionstack.com/
 
 

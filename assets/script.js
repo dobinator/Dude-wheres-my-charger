@@ -1,3 +1,6 @@
+/* 
+
+
 //init function
     //populate search history
     //display data for last search 
@@ -18,8 +21,22 @@
 
 
 //variables 
-//api key
+//api key position stack
 //positionstack api url
 //open charge map api url 
 //lat and lon values (will be set equal to data from posistion stack at-> data.data[0].latitude & data.data[0].longitude)
-//chargers info (array of objects, object will store title, address, town, state, postcode)
+//chargers info (array of objects, object will store title, address, town, state, postcode, array of charger types)
+    // chargers info = [
+        {
+            title: Walmart 331 Sulphur,
+            address: 525 N Cities Service Hwy,
+            town: sulphur,
+            state: LA,
+            postcode: 70663,
+            chargers: ["CHAdeMO", "CCS (Type 1)"]
+        }
+    ] 
+    
+    
+    
+*/

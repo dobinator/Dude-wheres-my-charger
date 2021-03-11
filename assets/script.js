@@ -1,5 +1,39 @@
+
+const psKey="561b5fdd2c9ef31ec83be9783559e272"
+var chargerInfo=[]
 var searchHistory = JSON.parse(localStorage.getItem("History")) || [];
 
+function getData(address, distance){
+    var psUrl=`http://api.positionstack.com/v1/forward?access_key=${psKey}&query=${address}`
+    fetch(psUrl)
+        .then(function(response){
+            return response.json()
+        })
+        .then(function(psData){
+            var lat=psData.data[0].latitude
+            var lon=psData.data[0].longitude
+            ocUrl=`https://api.openchargemap.io/v3/poi/?output=json&latitude=${lat}&longitude=${lon}&distance=${distance}`
+            fetch(ocUrl)
+                .then(function(response){
+                    return response.json()
+                })
+                .then(function(ocData){
+                    console.log(ocData)
+                    for (let i = 0; i < ocData.length; i++) {
+                    chargerInfo.push({})
+                    chargerInfo[i].title = ocData[i].AddressInfo.Title
+                    chargerInfo[i].address = ocData[i].AddressInfo.AddressLine1
+                    chargerInfo[i].town = ocData[i].AddressInfo.Town
+                    chargerInfo[i].state = ocData[i].AddressInfo.StateOrProvince
+                    chargerInfo[i].zip = ocData[i].AddressInfo.Postcode
+
+                    if (ocData[i].Connections.length) {
+                        chargerInfo[i].chargerType = [ocData[i].Connections[0].ConnectionType.Title]
+                    }
+                    }
+                })
+        })
+}
 function saveSearchHistory(location, range) {
     //condition needs to reject if location & range pair are previously saved
     const doesExist = searchHistory.some(

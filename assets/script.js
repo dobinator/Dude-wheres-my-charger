@@ -1,3 +1,8 @@
+function sliderValue(vol) {
+	document.querySelector('#mileOutput').textContent = vol;
+}
+
+
 /* 
 
 
@@ -13,12 +18,17 @@
         //get lat and lon value
         //call open charge map api
         //get chargers locations, addresses, and connection types
+        //return
 
 //dispaly data
     //create elements for each charger returned
     //set text conents based on values from apis 
     //append to html
 
+//add to search history
+    //get search params from data function
+    //save to local storage
+    //add to search history list
 
 //variables 
 //api key position stack

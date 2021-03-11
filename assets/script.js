@@ -1,3 +1,24 @@
+var searchHistory = JSON.parse(localStorage.getItem("History")) || [];
+
+
+
+
+function saveSearchHistory(location, range) {
+    //condition needs to reject if location & range pair are previously saved
+    const doesExist = searchHistory.some(
+        (item) => item[0] === location && item[1] === range
+
+    )
+
+    if (doesExist) return;
+
+    searchHistory.push([location, range]);
+    localStorage.setItem("History", JSON.stringify(searchHistory));
+
+
+
+
+}
 /* 
 
 

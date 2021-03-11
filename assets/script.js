@@ -26,7 +26,7 @@ function sliderValue(vol) {
     //append to html
 
 //add to search history
-    //get search params from data function
+    //get search params from data function 
     //save to local storage
     //add to search history list
 

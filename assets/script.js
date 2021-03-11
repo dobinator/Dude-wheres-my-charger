@@ -1,11 +1,7 @@
 
 const psKey="561b5fdd2c9ef31ec83be9783559e272"
 var chargerInfo=[]
-
-
-
-
-
+var searchHistory = JSON.parse(localStorage.getItem("History")) || [];
 
 function getData(address, distance){
     var psUrl=`http://api.positionstack.com/v1/forward?access_key=${psKey}&query=${address}`
@@ -24,51 +20,59 @@ function getData(address, distance){
                 .then(function(ocData){
                     console.log(ocData)
                     for (let i = 0; i < ocData.length; i++) {
-                        
-                    
                     chargerInfo.push({})
                     chargerInfo[i].title = ocData[i].AddressInfo.Title
                     chargerInfo[i].address = ocData[i].AddressInfo.AddressLine1
                     chargerInfo[i].town = ocData[i].AddressInfo.Town
                     chargerInfo[i].state = ocData[i].AddressInfo.StateOrProvince
                     chargerInfo[i].zip = ocData[i].AddressInfo.Postcode
-                    // chargerInfo[i].chargerType = [ocData[i].Connections[0].ConnectionType.Title]
+
+                    if (ocData[i].Connections.length) {
+                        chargerInfo[i].chargerType = [ocData[i].Connections[0].ConnectionType.Title]
+                    }
                     }
                 })
         })
 }
-
-getData("chicago", 10)
-/* 
+function saveSearchHistory(location, range) {
+    //condition needs to reject if location & range pair are previously saved
+    const doesExist = searchHistory.some(
+        (item) => item[0] === location && item[1] === range
+    )
+    if (doesExist) return;
+    searchHistory.push([location, range]);
+    localStorage.setItem("History", JSON.stringify(searchHistory));
+}
+/*
 
 
 //init function
     //populate search history
-    //display data for last search 
+    //display data for last search
     //set up event listener for form submit
     //set up event listener for search history
 
 //get data function (address, distance)
-    //arguments from user input or search history 
-    //call positionstack api 
+    //arguments from user input or search history
+    //call positionstack api
         //get lat and lon value
         //call open charge map api
         //get chargers locations, addresses, and connection types
 
 //dispaly data
     //create elements for each charger returned
-    //set text conents based on values from apis 
+    //set text conents based on values from apis
     //append to html
 
 //add to search history
-    //get search params from data function 
+    //get search params from data function
     //save to local storage
     //add to search history list
 
-//variables 
+//variables
 //api key position stack
 //positionstack api url
-//open charge map api url 
+//open charge map api url
 //lat and lon values (will be set equal to data from posistion stack at-> data.data[0].latitude & data.data[0].longitude)
 //chargers info (array of objects, object will store title, address, town, state, postcode, array of charger types)
     // chargers info = [
@@ -80,8 +84,8 @@ getData("chicago", 10)
             postcode: 70663,
             chargers: ["CHAdeMO", "CCS (Type 1)"]
         }
-    ] 
-    
-    
-    
+    ]
+
+
+
 */

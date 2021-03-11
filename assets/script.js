@@ -2,6 +2,7 @@ function sliderValue(vol) {
 	document.querySelector('#mileOutput').textContent = vol;
 }
 
+var searchHistory = [];
 
 /* 
 

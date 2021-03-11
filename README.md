@@ -1,4 +1,6 @@
 # Dude-wheres-my-charger
+
+#Description: 
 The application was created for an electric car owner who is looking for charging stations within a specific location area (urban).The application will utilize free API's for an open charge map and an  forward geocoding to assist with location finders. The application will be using Local Storage for remembering prior entered locations.
 
 
@@ -27,11 +29,10 @@ https://positionstack.com/
 
 
 
-*If there is a time, free vs. membership with charging station locations.
-
-
-
 ![Dude wheres my charger](./assets/wireframe.jpg)
 
+
+
+*If there is a time, free vs. membership with charging station locations.
 
 #vanlife

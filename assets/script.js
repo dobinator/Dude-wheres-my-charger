@@ -18,7 +18,6 @@ function getData(address, distance) {
                     return response.json()
                 })
                 .then(function (ocData) {
-                    console.log(ocData)
                     for (let i = 0; i < ocData.length; i++) {
                         chargerInfo.push({})
                         chargerInfo[i].title = ocData[i].AddressInfo.Title
@@ -49,13 +48,13 @@ function saveSearchHistory(location, range) {
 function displayData() {
     for (let i = 0; i < chargerInfo.length; i++) {
         var resultsCard = document.createElement('li');
-        resultsCard.classList(); // add in classes once we know which we need
+        //resultsCard.classList(); // add in classes once we know which we need
         resultsCard.innerHTML = `
             <h1>${chargerInfo[i].title}</h1>
-            <a><h4>${chargerInfo[i].address}</h4></a>
+            <a><h4>${chargerInfo[i].address} ${chargerInfo[i].town}, ${chargerInfo[i].state} ${chargerInfo[i].zip}</h4></a>
             <h4>${chargerInfo[i].chargerType.join(', ')}</h4>
             `;
-        document.getElementById('results').appendChild(resultsCard);
+        document.getElementById('searchresults').appendChild(resultsCard);
     }
 }
 

@@ -60,6 +60,7 @@ function saveSearchHistory(location, range) {
         //get lat and lon value
         //call open charge map api
         //get chargers locations, addresses, and connection types
+        //return
 
 //dispaly data
     //create elements for each charger returned

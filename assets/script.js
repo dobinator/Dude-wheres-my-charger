@@ -26,9 +26,11 @@ function getData(address, distance){
                     chargerInfo[i].town = ocData[i].AddressInfo.Town
                     chargerInfo[i].state = ocData[i].AddressInfo.StateOrProvince
                     chargerInfo[i].zip = ocData[i].AddressInfo.Postcode
-
+                    chargerInfo[i].chargerType = [];
                     if (ocData[i].Connections.length) {
-                        chargerInfo[i].chargerType = [ocData[i].Connections[0].ConnectionType.Title]
+                        for (let x = 0; x < ocData[i].Connections.length; x++){
+                        chargerInfo[i].chargerType.push(ocData[i].Connections[x].ConnectionType.Title)
+                    }
                     }
                     }
                 })

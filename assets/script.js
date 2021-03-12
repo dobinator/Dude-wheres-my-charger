@@ -68,11 +68,7 @@ function saveSearchHistory(location, range) {
     //append to html
 
 //add to search history
-<<<<<<< HEAD
-    //get address and distance
-=======
     //get search params from data function
->>>>>>> 30824b63fd3343ad2c113084ba746754aa04a8d8
     //save to local storage
     //add to search history list
 

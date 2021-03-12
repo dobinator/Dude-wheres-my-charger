@@ -10,40 +10,39 @@
     <link rel="stylesheet" href="assets/style.css" />
     <!-- ... -->
 </head>
-
 <body class="bg-gradient-to-r from-blue-400 to-yellow-300">
-    <header
-        class="h-16 py-1 text-3xl font-bold text-white text-center align-middle bg-blue-600 border-4 border-violet-400">
-        Dude,
-        Where's My Charger?</header>
-    <main class="flex min-h-screen items-center justify-start border-green-600 border-2">
+    <!--Header============================================= -->
+    <!-- 
+        
 
-        <div class="bg-white min p-16 ">
-
-            <form class="space-y-6 bg-yellow-300">
-                <div>
-                    <label for="usercity">Location</label>
-                    <input type="text" class="" id="usercity">
-                </div>
-
-                <div>
-                    <label for="mileslider">Range</label>
-                    <input type="range" name="mileslider" id="mileslider" min="1" max="250" value="50" step="1"
-                        oninput="sliderValue(value)" class="text-white">
-                    <output for="mileslider" id="mileOutput">50</output>
-                </div>
-
-                <button class="bg-red-400" id="submitSearch">Find your Charger</button>
-            </form>
-            <ul class="h-16 w-16 bg-red-400" id="searchhistory">search history</ul>
-
+    -->
+    <header class="flex justify-items-center items-center bg-blue-600 border-1 border-blue-400">
+        <h1 class="p-2 mx-auto text-3xl text-blue-100 text-bold">Dude, Where's My Charger</h1>
+    </header>
+    <!--Form============================================= -->
+    <form class="space-y-6 bg-green-400">
+        <div>
+            <label for="usercity">Location</label>
+            <input type="text" class="" id="usercity">
         </div>
 
-        <ul class="bg-green-300" id ="searchresults">AGEAGASDGAWEG</ul>
-    </main>
+        <div>
+            <label for="mileslider">Range</label>
+            <input type="range" name="mileslider" id="mileslider" min="1" max="250" value="50" step="1"
+                oninput="sliderValue(value)" class="text-white">
+            <output for="mileslider" id="mileOutput">50</output>
+        </div>
+
+        <button id="submitSearch" class="bg-red-400" >Find your Charger</button>
+    </form>
+    <!--Display Results of Search============================================= -->
+    <ul id="searchresults" class= "h-16 bg-indigo-400">gserg</ul>
 
 
+    <!--Search history============================================= -->
+    <ul id="searchhistory" class="h-16 bg-blue-600">ergsser</ul>
     <!-- ... -->
+    <footer class="h-12 bg-black"></footer>
     <script src="./assets/script.js"></script>
 </body>
 

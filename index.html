@@ -21,7 +21,7 @@
         <h1 class="p-2 mx-auto text-3xl text-blue-100 text-bold">Dude, Where's My Charger</h1>
     </header>
     <!--Form============================================= -->
-    <form class="p-4 items-center space-y-6 bg-green-400">
+    <form class="p-4 items-center space-y-6 bg-green-400 md:inline-block md:w-1/4 md:self-start">
         <div>
             <label for="usercity">Location</label>
             <input type="text" class="" id="usercity">
@@ -34,17 +34,17 @@
             <output for="mileslider" id="mileOutput">50 Miles</output>
         </div>
 
-        <button id="submitSearch" class="p-2 bg-red-400">Find your Charger</button>
+        <button id="submitSearch" class="p-2 bg-red-400">Find Your Charger</button>
     </form>
     <!--Display Results of Search============================================= -->
-    <ul id="searchresults" class="flex-col">
+    <ul id="searchresults" class="flex-col md:inline-block">
         <li class="border-2 border-blue-700 bg-indigo-400">
             <h1 class="px-2">No Search Results</h1>
         </li>
 
     </ul>
 
-    <h3 class=" p-2 bg-yellow-400 align-middle">Search History</h3>
+    <h3 class=" p-2 bg-yellow-300 align-middle">Search History</h3>
     <!--Search history============================================= -->
     <ul id="searchhistory" class="flex-col">
         <li class="border-2 border-blue-700 bg-red-400 cursor-pointer">

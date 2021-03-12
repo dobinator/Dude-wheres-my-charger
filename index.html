@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="assets/style.css" />
     <!-- ... -->
 </head>
+
 <body class="bg-gradient-to-r from-blue-400 to-yellow-300">
     <!--Header============================================= -->
     <!-- 
@@ -20,7 +21,7 @@
         <h1 class="p-2 mx-auto text-3xl text-blue-100 text-bold">Dude, Where's My Charger</h1>
     </header>
     <!--Form============================================= -->
-    <form class="items-center space-y-6 bg-green-400">
+    <form class="p-4 items-center space-y-6 bg-green-400">
         <div>
             <label for="usercity">Location</label>
             <input type="text" class="" id="usercity">
@@ -33,16 +34,28 @@
             <output for="mileslider" id="mileOutput">50</output>
         </div>
 
-        <button id="submitSearch" class="bg-red-400" >Find your Charger</button>
+        <button id="submitSearch" class="p-2 bg-red-400">Find your Charger</button>
     </form>
     <!--Display Results of Search============================================= -->
-    <ul id="searchresults" class= "h-16 bg-indigo-400">gserg</ul>
+    <ul id="searchresults" class="flex-col">
+        <li class="border-2 border-blue-700 bg-indigo-400">
+            <h1 class="px-2">No Search Results</h1>
+        </li>
 
+    </ul>
 
+    <h3 class=" p-2 bg-yellow-400 align-middle">Search History</h3>
     <!--Search history============================================= -->
-    <ul id="searchhistory" class="h-16 bg-blue-600">ergsser</ul>
+    <ul id="searchhistory" class="flex-col">
+        <li class="border-2 border-blue-700 bg-red-400 cursor-pointer">
+            <h1 class="px-2">No Search History</h1>
+            
+
+        </li>
+        
+    </ul>
     <!-- ... -->
-    <footer class="h-12 bg-black"></footer>
+    <footer class="h-10 bg-black"></footer>
     <script src="./assets/script.js"></script>
 </body>
 

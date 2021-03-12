@@ -46,13 +46,14 @@ function saveSearchHistory(location, range) {
 }
 
 function displayData() {
+    document.getElementById("searchresults").innerHTML = "";
     for (let i = 0; i < chargerInfo.length; i++) {
         var resultsCard = document.createElement('li');
-        //resultsCard.classList(); // add in classes once we know which we need 
+        resultsCard.classList = "mt-2 border-2 border-blue-700 bg-indigo-400"; // add in classes once we know which we need 
         resultsCard.innerHTML = `
-            <h1>${chargerInfo[i].title}</h1>
-            <a href="https://www.google.com/maps/place/${chargerInfo[i].address + chargerInfo[i].town + chargerInfo[i].state + chargerInfo[i].zip}" target='_blank'><h4>${chargerInfo[i].address} ${chargerInfo[i].town}, ${chargerInfo[i].state} ${chargerInfo[i].zip}</h4></a>
-            <h4>${chargerInfo[i].chargerType.join(', ')}</h4>
+            <h1 class="px-2">${chargerInfo[i].title}</h1>
+            <a class="px-2 underline hover:text-green-400 cursor-pointer" href="https://www.google.com/maps/place/${chargerInfo[i].address + chargerInfo[i].town + chargerInfo[i].state + chargerInfo[i].zip}" target='_blank'>${chargerInfo[i].address} ${chargerInfo[i].town}, ${chargerInfo[i].state} ${chargerInfo[i].zip}</a>
+            <h4 class="px-2">${chargerInfo[i].chargerType.join(', ')}</h4>
             `;
         document.getElementById('searchresults').appendChild(resultsCard);
     }

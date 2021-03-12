@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>EV Charger Finder</title>
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="./assets/style.css"/>
-    <title>Dude Where's My Charger</title>
+    <link rel="stylesheet" href="assets/style.css" />
+    <!-- ... -->
 </head>
+<<<<<<< HEAD
 <body>
     <form>
         <input type="text" placeholder="Enter a city or address">
@@ -16,7 +19,42 @@
     <div>
         <ul id="results"></ul>
     </div>
+=======
+<body class="bg-gradient-to-r from-blue-400 to-yellow-300">
+    <!--Header============================================= -->
+    <!-- 
+        
+>>>>>>> aa04d9fe585e252e3ed542ce2a857f5b6ecf0d3c
 
+    -->
+    <header class="flex justify-items-center items-center bg-blue-600 border-1 border-blue-400">
+        <h1 class="p-2 mx-auto text-3xl text-blue-100 text-bold">Dude, Where's My Charger</h1>
+    </header>
+    <!--Form============================================= -->
+    <form class="items-center space-y-6 bg-green-400">
+        <div>
+            <label for="usercity">Location</label>
+            <input type="text" class="" id="usercity">
+        </div>
+
+        <div>
+            <label for="mileslider">Range</label>
+            <input type="range" name="mileslider" id="mileslider" min="1" max="250" value="50" step="1"
+                oninput="sliderValue(value)" class="text-white">
+            <output for="mileslider" id="mileOutput">50</output>
+        </div>
+
+        <button id="submitSearch" class="bg-red-400" >Find your Charger</button>
+    </form>
+    <!--Display Results of Search============================================= -->
+    <ul id="searchresults" class= "h-16 bg-indigo-400">gserg</ul>
+
+
+    <!--Search history============================================= -->
+    <ul id="searchhistory" class="h-16 bg-blue-600">ergsser</ul>
+    <!-- ... -->
+    <footer class="h-12 bg-black"></footer>
     <script src="./assets/script.js"></script>
 </body>
+
 </html>

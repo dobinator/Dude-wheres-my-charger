@@ -53,10 +53,14 @@ function displayData() {
         resultsCard.innerHTML = `
             <h1 class="px-2">${chargerInfo[i].title}</h1>
             <a class="px-2 underline hover:text-green-400 cursor-pointer" href="https://www.google.com/maps/place/${chargerInfo[i].address + chargerInfo[i].town + chargerInfo[i].state + chargerInfo[i].zip}" target='_blank'>${chargerInfo[i].address} ${chargerInfo[i].town}, ${chargerInfo[i].state} ${chargerInfo[i].zip}</a>
-            <h4 class="px-2">${chargerInfo[i].chargerType.join(', ')}</h4>
+            <h4 class="px-2">Charger Types: ${chargerInfo[i].chargerType.join(', ')}</h4>
             `;
         document.getElementById('searchresults').appendChild(resultsCard);
     }
+}
+
+function sliderValue(val){
+    document.querySelector('#mileOutput').textContent = val + " Miles";
 }
 
 /*
@@ -96,8 +100,8 @@ function displayData() {
             address: 525 N Cities Service Hwy,
             town: sulphur,
             state: LA,
-            postcode: 70663,
-            chargers: ["CHAdeMO", "CCS (Type 1)"]
+            zip: 70663,
+            chargerType: ["CHAdeMO", "CCS (Type 1)"]
         }
     ]
 

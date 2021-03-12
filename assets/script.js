@@ -48,10 +48,10 @@ function saveSearchHistory(location, range) {
 function displayData() {
     for (let i = 0; i < chargerInfo.length; i++) {
         var resultsCard = document.createElement('li');
-        //resultsCard.classList(); // add in classes once we know which we need
+        //resultsCard.classList(); // add in classes once we know which we need 
         resultsCard.innerHTML = `
             <h1>${chargerInfo[i].title}</h1>
-            <a><h4>${chargerInfo[i].address} ${chargerInfo[i].town}, ${chargerInfo[i].state} ${chargerInfo[i].zip}</h4></a>
+            <a href="https://www.google.com/maps/place/${chargerInfo[i].address + chargerInfo[i].town + chargerInfo[i].state + chargerInfo[i].zip}" target='_blank'><h4>${chargerInfo[i].address} ${chargerInfo[i].town}, ${chargerInfo[i].state} ${chargerInfo[i].zip}</h4></a>
             <h4>${chargerInfo[i].chargerType.join(', ')}</h4>
             `;
         document.getElementById('searchresults').appendChild(resultsCard);

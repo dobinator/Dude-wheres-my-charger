@@ -80,7 +80,7 @@ function displaySearchHistory() {
   document.getElementById("searchhistory").innerHTML = "";
   for (let i = 0; i < searchHistory.length; i++) {
     var history = document.createElement("li");
-    history.classList = "border-2 border-blue-700 bg-red-400 cursor-pointer px-2";
+    history.classList = "border-2 border-blue-700 bg-blue-500 cursor-pointer px-2";
     history.setAttribute("data-location", searchHistory[i][0])
     history.setAttribute("data-range", searchHistory[i][1])
     history.textContent = `${searchHistory[i][0]}, ${searchHistory[i][1]}`;

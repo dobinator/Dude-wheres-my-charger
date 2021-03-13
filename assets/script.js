@@ -3,6 +3,7 @@ var chargerInfo = [];
 var searchHistory = JSON.parse(localStorage.getItem("History")) || [];
 
 function getData(address, distance) {
+  chargerInfo = [];
   var psUrl = `http://api.positionstack.com/v1/forward?access_key=${psKey}&query=${address}`;
   fetch(psUrl)
     .then(function (response) {
@@ -33,9 +34,38 @@ function getData(address, distance) {
               }
             }
           }
+          displayData();
         });
     });
 }
+
+// //populate search history
+//display data for last search
+//set up event listener for form submit
+//set up event listener for search history
+init();
+function init() {
+  displaySearchHistory();
+  document.getElementById("form").addEventListener("submit", function (event) {
+    event.preventDefault();
+    console.log("alert");
+    getData(
+      document.getElementById("usercity").value,
+      document.getElementById("mileslider").value
+    );
+    saveSearchHistory(
+      document.getElementById("usercity").value,
+      document.getElementById("mileslider").value
+    );
+    displaySearchHistory();
+  });
+
+document.getElementById("searchhistory").addEventListener("click", function(event){
+    getData(event.target.getAttribute("data-location"), event.target.getAttribute("data-range"))
+})
+
+}
+
 function saveSearchHistory(location, range) {
   //condition needs to reject if location & range pair are previously saved
   const doesExist = searchHistory.some(
@@ -50,9 +80,10 @@ function displaySearchHistory() {
   document.getElementById("searchhistory").innerHTML = "";
   for (let i = 0; i < searchHistory.length; i++) {
     var history = document.createElement("li");
-    history.classList = "border-2 border-blue-700 bg-red-400 cursor-pointer";
-    history.innerHTML = `
-    <h1 class="px-2">${searchHistory[i].join(", ")}</h1>`;
+    history.classList = "border-2 border-blue-700 bg-red-400 cursor-pointer px-2";
+    history.setAttribute("data-location", searchHistory[i][0])
+    history.setAttribute("data-range", searchHistory[i][1])
+    history.textContent = `${searchHistory[i][0]}, ${searchHistory[i][1]}`;
     document.getElementById("searchhistory").appendChild(history);
   }
 }

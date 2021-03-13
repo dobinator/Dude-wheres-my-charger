@@ -21,41 +21,45 @@
         <h1 class="p-2 mx-auto text-3xl text-blue-100 text-bold">Dude, Where's My Charger</h1>
     </header>
     <!--Form============================================= -->
-    <form class="p-4 items-center space-y-6 bg-green-400 md:inline-block md:w-1/4 md:self-start">
-        <div>
-            <label for="usercity">Location</label>
-            <input type="text" class="" id="usercity">
-        </div>
+    <div class="flex-col md:flex-row justify-items-start ">
 
-        <div>
-            <label for="mileslider">Range</label>
-            <input type="range" name="mileslider" id="mileslider" min="2" max="250" value="50" step="1"
-                oninput="sliderValue(value)" class="text-white">
-            <output for="mileslider" id="mileOutput">50 Miles</output>
-        </div>
+        <form class="p-4 top-6 items-center space-y-6 bg-blue-600 border-2 border-blue-800 md:inline-block md:w-1/4 md:justfy-self-start">
+            <div>
+                <label for="usercity">Location</label>
+                <input type="text" class="" id="usercity">
+            </div>
 
-        <button id="submitSearch" class="p-2 bg-red-400">Find Your Charger</button>
-    </form>
-    <!--Display Results of Search============================================= -->
-    <ul id="searchresults" class="flex-col md:inline-block">
-        <li class="border-2 border-blue-700 bg-indigo-400">
-            <h1 class="px-2">No Search Results</h1>
-        </li>
+            <div>
+                <label for="mileslider">Range</label>
+                <input type="range" name="mileslider" id="mileslider" min="2" max="250" value="50" step="1"
+                    oninput="sliderValue(value)" class="text-white">
+                <output for="mileslider" id="mileOutput">50 Miles</output>
+            </div>
 
-    </ul>
-
-    <h3 class=" p-2 bg-yellow-300 align-middle">Search History</h3>
-    <!--Search history============================================= -->
-    <ul id="searchhistory" class="flex-col">
-        <li class="border-2 border-blue-700 bg-red-400 cursor-pointer">
-            <h1 class="px-2">No Search History</h1>
-            
-
-        </li>
+            <button id="submitSearch" class="p-2 rounded-md border-2 border-blue-700 bg-yellow-400 text-blue-600">Find Your Charger</button>
+        </form>
         
+        <ul id="searchresults" class="flex-col m-2 md:inline-block md:w-1/2">
+            <li class="border-2 border-blue-700 bg-indigo-400">
+                <h1 class="px-2">No Search Results</h1>
+            </li>
+    
+        </ul>
+    </div>
+    <!--Display Results of Search============================================= -->
+
+    <h3 class=" p-2 bg-yellow-300 text-blue-600 align-middle">Search History</h3>
+    <!--Search history============================================= -->
+    <ul id="searchhistory" class="m-2 flex-col">
+        <li class="border-2 border-blue-700 bg-yellow-400 cursor-pointer">
+            <h1 class="px-2">No Search History</h1>
+
+
+        </li>
+
     </ul>
     <!-- ... -->
-    <footer class="h-10 bg-black"></footer>
+    <footer class="flex bottom-0 place-content-center text-blue-100 h-6 bg-blue-800">Team Ronald Wesley Howard II 2021</footer>
     <script src="./assets/script.js"></script>
 </body>
 

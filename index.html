@@ -21,11 +21,11 @@
         <h1 class="p-2 mx-auto text-3xl text-blue-100 text-bold">Dude, Where's My Charger</h1>
     </header>
     <!--Form============================================= -->
-    <div class="flex-col md:flex-row  place-items-start">
+    <div class="flex-col md:h-64 md:flex-row  place-items-start">
         
         
         <form id="form"
-            class="p-4 self-start items-center space-y-6 bg-blue-600 border-2 border-blue-800 md:inline-block md:w-1/4 md:justfy-self-start">
+            class="p-4 md:absolute md:top-4 self-start items-center space-y-6 bg-blue-600 border-2 border-blue-800 md:inline-block md:w-1/4 md:justfy-self-start">
             <div>
                 <label for="usercity">Location</label>
                 <input type="text" class="" id="usercity">
@@ -43,7 +43,7 @@
         </form>
         
 
-        <ul id="searchresults" class="flex-col m-2 md:h-64 md:inline-block md:w-1/2 md:overflow-y-auto">
+        <ul id="searchresults" class="flex-col px-2 m-2 md:absolute md:right-0 md:h-64 md:inline-block md:w-3/4 md:overflow-y-auto">
             <li class="border-2 border-blue-700 bg-indigo-400">
                 <h1 class="px-2"></h1>No Search Results</h1>
             </li>
@@ -54,7 +54,7 @@
 
     <h3 class=" p-2 bg-yellow-300 text-blue-600 align-middle">Search History</h3>
     <!--Search history============================================= -->
-    <ul id="searchhistory" class="m-2 flex-col">
+    <ul id="searchhistory" class="m-2 py-2 flex-col">
         <li class="border-2 border-blue-700 bg-yellow-400 cursor-pointer">
             <h1 class="px-2">No Search History</h1>
 
@@ -63,7 +63,7 @@
 
     </ul>
     <!-- ... -->
-    <footer class="flex w-full fixed bottom-0 place-content-center text-blue-100 h-6 bg-blue-800"><a href="https://github.com/dobinator/Dude-wheres-my-charger" target="_blank">Github Repository</a></footer>
+    <footer class="flex w-full fixed bottom-0 pb-1 place-content-center text-blue-100 h-6 bg-blue-800"><a href="https://github.com/dobinator/Dude-wheres-my-charger" target="_blank">Github Repository</a></footer>
     <script src="./assets/script.js"></script>
 </body>
 

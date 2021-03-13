@@ -1,17 +1,23 @@
-const psKey = "561b5fdd2c9ef31ec83be9783559e272";
+// const psKey = "561b5fdd2c9ef31ec83be9783559e272";
+const oWKey = 'b40a49b598146847ec7cdb4601c0bec0';
 var chargerInfo = [];
 var searchHistory = JSON.parse(localStorage.getItem("History")) || [];
 
 function getData(address, distance) {
   chargerInfo = [];
-  var psUrl = `http://api.positionstack.com/v1/forward?access_key=${psKey}&query=${address}`;
-  fetch(psUrl)
+  // var psUrl = `http://api.positionstack.com/v1/forward?access_key=${psKey}&query=${address}`;
+  var oWUrl = `https://api.openweathermap.org/data/2.5/weather?q=${address}&units=imperial&appid=${oWKey}`
+  fetch(oWUrl)
     .then(function (response) {
       return response.json();
     })
-    .then(function (psData) {
-      var lat = psData.data[0].latitude;
-      var lon = psData.data[0].longitude;
+    .then(function (oWData) {
+      if (oWData.cod === '404'){
+        callModal();
+        return;
+    }
+      var lat = oWData.coord.lat;
+      var lon = oWData.coord.lon;
       ocUrl = `https://api.openchargemap.io/v3/poi/?output=json&latitude=${lat}&longitude=${lon}&distance=${distance}`;
       fetch(ocUrl)
         .then(function (response) {
@@ -48,7 +54,6 @@ function init() {
   displaySearchHistory();
   document.getElementById("form").addEventListener("submit", function (event) {
     event.preventDefault();
-    console.log("alert");
     getData(
       document.getElementById("usercity").value,
       document.getElementById("mileslider").value
@@ -113,6 +118,16 @@ function displayData() {
 
 function sliderValue(val) {
   document.querySelector("#mileOutput").textContent = val + " Miles";
+}
+
+function callModal(){
+  document.querySelector('#errorModal').style.display  = 'block';
+}
+
+window.onclick = function(e){
+  if(e.target === document.querySelector('#errorModal')){
+    document.querySelector('#errorModal').style.display = 'none'
+  }
 }
 
 /*

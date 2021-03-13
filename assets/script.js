@@ -84,6 +84,12 @@ function sliderValue(val) {
   document.querySelector("#mileOutput").textContent = val + " Miles";
 }
 
+function g(){
+    getData("Phoenix", 25);
+}
+function h(){
+displayData();
+}
 /*
 //init function
     //populate search history

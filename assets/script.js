@@ -24,6 +24,7 @@ function init() {
 }
 
 function getData(address, distance) {
+  document.querySelector('body').classList.add('cursor-wait');
   chargerInfo = [];
   // var psUrl = `http://api.positionstack.com/v1/forward?access_key=${psKey}&query=${address}`;
   var oWUrl = `https://api.openweathermap.org/data/2.5/weather?q=${address}&units=imperial&appid=${oWKey}`
@@ -63,6 +64,7 @@ function getData(address, distance) {
             }
           }
           displayData();
+          document.querySelector('body').classList.remove('cursor-wait');
         });
     });
 }

@@ -1,9 +1,30 @@
-// const psKey = "561b5fdd2c9ef31ec83be9783559e272";
+// const psKey = "561b5fdd2c9ef31ec83be9783559e272"; 
 const oWKey = 'b40a49b598146847ec7cdb4601c0bec0';
 var chargerInfo = [];
 var searchHistory = JSON.parse(localStorage.getItem("History")) || [];
 
+function init() {
+  displaySearchHistory();
+  document.getElementById("form").addEventListener("submit", function (event) {
+    event.preventDefault();
+    getData(document.getElementById("usercity").value, document.getElementById("mileslider").value);
+    document.getElementById("usercity").value = '';
+  });
+
+  document.getElementById("searchhistory").addEventListener("click", function (event) {
+    getData(event.target.getAttribute("data-location"), event.target.getAttribute("data-range"))
+  })
+
+  window.onclick = function(e){
+    if(e.target === document.querySelector('#errorModal')){
+      document.querySelector('#errorModal').style.display = 'none'
+    }
+  }
+
+}
+
 function getData(address, distance) {
+  document.querySelector('body').classList.add('cursor-wait');
   chargerInfo = [];
   // var psUrl = `http://api.positionstack.com/v1/forward?access_key=${psKey}&query=${address}`;
   var oWUrl = `https://api.openweathermap.org/data/2.5/weather?q=${address}&units=imperial&appid=${oWKey}`
@@ -12,10 +33,10 @@ function getData(address, distance) {
       return response.json();
     })
     .then(function (oWData) {
-      if (oWData.cod === '404'){
+      if (oWData.cod === '404') {
         callModal();
         return;
-    }
+      }
       var lat = oWData.coord.lat;
       var lon = oWData.coord.lon;
       ocUrl = `https://api.openchargemap.io/v3/poi/?output=json&latitude=${lat}&longitude=${lon}&distance=${distance}`;
@@ -24,6 +45,8 @@ function getData(address, distance) {
           return response.json();
         })
         .then(function (ocData) {
+          saveSearchHistory(address, distance);
+          displaySearchHistory();
           for (let i = 0; i < ocData.length; i++) {
             chargerInfo.push({});
             chargerInfo[i].title = ocData[i].AddressInfo.Title;
@@ -41,34 +64,9 @@ function getData(address, distance) {
             }
           }
           displayData();
+          document.querySelector('body').classList.remove('cursor-wait');
         });
     });
-}
-
-// //populate search history
-//display data for last search
-//set up event listener for form submit
-//set up event listener for search history
-init();
-function init() {
-  displaySearchHistory();
-  document.getElementById("form").addEventListener("submit", function (event) {
-    event.preventDefault();
-    getData(
-      document.getElementById("usercity").value,
-      document.getElementById("mileslider").value
-    );
-    saveSearchHistory(
-      document.getElementById("usercity").value,
-      document.getElementById("mileslider").value
-    );
-    displaySearchHistory();
-  });
-
-document.getElementById("searchhistory").addEventListener("click", function(event){
-    getData(event.target.getAttribute("data-location"), event.target.getAttribute("data-range"))
-})
-
 }
 
 function saveSearchHistory(location, range) {
@@ -100,17 +98,15 @@ function displayData() {
     resultsCard.classList = "mt-2 border-2 border-blue-700 bg-indigo-400"; // add in classes once we know which we need
     resultsCard.innerHTML = `
             <h1 class="px-2">${chargerInfo[i].title}</h1>
-            <a class="px-2 underline hover:text-green-400 cursor-pointer" href="https://www.google.com/maps/place/${
-              chargerInfo[i].address +
-              chargerInfo[i].town +
-              chargerInfo[i].state +
-              chargerInfo[i].zip
-            }" target='_blank'>${chargerInfo[i].address} ${
-      chargerInfo[i].town
-    }, ${chargerInfo[i].state} ${chargerInfo[i].zip}</a>
+            <a class="px-2 underline hover:text-green-400 cursor-pointer" href="https://www.google.com/maps/place/${chargerInfo[i].address +
+      chargerInfo[i].town +
+      chargerInfo[i].state +
+      chargerInfo[i].zip
+      }" target='_blank'>${chargerInfo[i].address} ${chargerInfo[i].town
+      }, ${chargerInfo[i].state} ${chargerInfo[i].zip}</a>
             <h4 class="px-2">Charger Types: ${chargerInfo[i].chargerType.join(
-              ", "
-            )}</h4>
+        ", "
+      )}</h4>
             `;
     document.getElementById("searchresults").appendChild(resultsCard);
   }
@@ -120,17 +116,16 @@ function sliderValue(val) {
   document.querySelector("#mileOutput").textContent = val + " Miles";
 }
 
-function callModal(){
-  document.querySelector('#errorModal').style.display  = 'block';
+function callModal() {
+  document.querySelector('#errorModal').style.display = 'block';
 }
 
-window.onclick = function(e){
-  if(e.target === document.querySelector('#errorModal')){
-    document.querySelector('#errorModal').style.display = 'none'
-  }
-}
+init();
+
 
 /*
+Logic Plan
+
 //init function
     //populate search history
     //display data for last search

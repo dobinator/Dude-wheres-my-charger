@@ -35,6 +35,7 @@ function getData(address, distance) {
     .then(function (oWData) {
       if (oWData.cod === '404') {
         callModal();
+        document.querySelector('body').classList.remove('cursor-wait')
         return;
       }
       var lat = oWData.coord.lat;
